@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>$HOTEMIN Dashboard 🌶️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        
+        <!-- Credit Banner -->
+        <div class="credit-banner">
+            <span>Created by <a href="https://x.com/_0xJack" target="_blank">@_0xJack</a> for the hottest man on earth 🔥 <a href="https://x.com/el33th4xor" target="_blank">@el33th4xor</a></span>
+        </div>
+
+        <!-- Top Section -->
+        <div class="dashboard-top">
+            <!-- Left Sidebar: Leaderboard -->
+            <aside class="sidebar leaderboard-panel">
+                <div class="panel">
+                    <h2>🏆 Top Callers</h2>
+                    <p>Most "Hot" Rated Authors</p>
+                    <ul id="leaderboard-list" class="leaderboard-list">
+                        <!-- Leaderboard items injected here -->
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Center: Swipe App -->
+            <main class="app-container">
+                <header class="header">
+                    <h1>🔥 $HOTEMIN 🔥</h1>
+                    <p class="subtitle">Rate the Hottest Emin's</p>
+                </header>
+
+                <div class="card-container" id="card-container">
+                    <!-- Cards will be injected here -->
+                </div>
+
+                <div class="controls">
+                    <button class="btn btn-nope" id="btn-nope">❌</button>
+                    <button class="btn btn-like" id="btn-like">💚</button>
+                </div>
+                
+                <div class="end-screen" id="end-screen" style="display: none;">
+                    <h2>You've rated all $HOTEMINs!</h2>
+                    <button class="btn btn-like" onclick="location.reload()">Play Again 🔄</button>
+                </div>
+            </main>
+        </div>
+
+        <!-- Fancy Divider -->
+        <div class="fancy-divider">
+            <span>🏹</span>
+        </div>
+
+        <!-- Bottom Section: Games -->
+        <div class="dashboard-bottom">
+            <!-- Game 1: Archery -->
+            <div class="panel game-panel archery-panel">
+                <div class="game-header">
+                    <h2>🏹 Eros vs Emin</h2>
+                    <div class="score-display">🪙 <span id="game-score">0</span></div>
+                </div>
+                
+                <div class="game-board" id="game-board">
+                    <div id="eros" class="eros-char">👼</div>
+                    <img id="target-emin" class="target-emin" src="images/pug.jpg" onerror="this.src='https://pbs.twimg.com/profile_images/2054257641808125952/RGAnM8NS_400x400.jpg'" alt="Emin Target" draggable="false">
+                </div>
+            </div>
+
+            <!-- Game 2: Match-3 -->
+            <div class="panel game-panel match3-panel">
+                <div class="game-header">
+                    <h2>🍬 Hot Emin Crush</h2>
+                    <div class="score-display">🪙 <span id="match3-score">0</span></div>
+                </div>
+                
+                <div class="match3-board" id="match3-board">
+                    <!-- Grid cells injected here via JS -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

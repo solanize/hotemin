@@ -1,0 +1,410 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    cursor: url('https://s2.coinmarketcap.com/static/img/coins/32x32/5805.png') 16 16, auto;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: #a8e6cf;
+    background-image: radial-gradient(#dcedc1 15%, transparent 16%), radial-gradient(#dcedc1 15%, transparent 16%);
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px;
+    min-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.dashboard-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px;
+}
+
+/* Credit Banner */
+.credit-banner {
+    width: 100%;
+    max-width: 930px; /* matches sidebar(350) + gap(30) + app(550) */
+    background: #ff5722;
+    border: 5px solid white;
+    border-radius: 30px;
+    padding: 15px 20px;
+    text-align: center;
+    font-family: 'Fredoka One', cursive;
+    color: white;
+    font-size: 1.4rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2), inset 0 -5px 0 rgba(0,0,0,0.2);
+    text-shadow: 2px 2px 0px #bf360c;
+    letter-spacing: 1px;
+}
+.credit-banner a {
+    color: #ffeb3b; /* Vibrant Yellow */
+    text-decoration: none;
+    transition: transform 0.1s, color 0.1s;
+    display: inline-block;
+    text-shadow: 2px 2px 0px #f57f17;
+}
+.credit-banner a:hover {
+    transform: scale(1.1) rotate(-5deg);
+    color: #fff;
+}
+
+.dashboard-top {
+    display: flex;
+    width: 100%;
+    gap: 30px;
+    justify-content: center;
+    height: 750px;
+}
+
+/* Sidebars */
+.sidebar {
+    flex: 1;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+}
+
+.panel {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 30px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1), inset 0 0 0 5px #ff5722;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: 100%;
+}
+
+.leaderboard-panel {
+    max-height: 750px;
+    overflow-y: auto;
+}
+
+.panel h2 {
+    font-family: 'Fredoka One', cursive;
+    color: #ff5722;
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.panel p {
+    color: #666;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* Leaderboard List */
+.leaderboard-list {
+    list-style: none;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.leaderboard-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 10px;
+    border-bottom: 2px dashed #ffccbc;
+    font-weight: bold;
+    color: #333;
+    font-size: 1.1rem;
+}
+.leaderboard-list li:nth-child(1) { color: #ff5722; font-size: 1.3rem; background: rgba(255,87,34,0.1); border-radius: 10px; }
+.leaderboard-list li:nth-child(2) { color: #795548; font-size: 1.2rem; }
+
+/* App Container (Center) - Increased width */
+.app-container {
+    flex: 1;
+    max-width: 550px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1), inset 0 0 0 5px rgba(255,255,255,0.5);
+    position: relative;
+}
+
+.header {
+    text-align: center;
+    padding: 20px 0;
+    background: #ff5722;
+    border-bottom: 5px solid #e64a19;
+    border-radius: 30px 30px 0 0;
+    color: white;
+    box-shadow: 0 5px 15px rgba(255, 87, 34, 0.3);
+    z-index: 10;
+}
+
+.header h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 0px #bf360c, 4px 4px 0px rgba(0,0,0,0.2);
+}
+.header .subtitle {
+    font-weight: 700;
+    color: #ffccbc;
+}
+
+.card-container {
+    flex: 1;
+    position: relative;
+    margin: 20px;
+    perspective: 1000px;
+}
+
+.card {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    overflow: hidden;
+    border: 8px solid white;
+    transition: transform 0.3s ease;
+    cursor: url('https://s2.coinmarketcap.com/static/img/coins/32x32/5805.png') 16 16, grab;
+    display: flex;
+    flex-direction: column;
+}
+.card:active { cursor: url('https://s2.coinmarketcap.com/static/img/coins/32x32/5805.png') 16 16, grabbing; }
+
+.card a {
+    display: block;
+    width: 100%; height: 80%;
+}
+
+.card img.main-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+    pointer-events: none;
+}
+
+.card-info {
+    padding: 15px;
+    text-align: center;
+    background: #fff;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+}
+.card-info h3 { font-family: 'Fredoka One', cursive; font-size: 1.4rem; }
+.card-info p { font-size: 1.1rem; color: #666; margin-top: 5px; }
+
+.controls {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px 20px 40px;
+}
+
+.btn {
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    border: none;
+    font-size: 2.5rem;
+    cursor: url('https://s2.coinmarketcap.com/static/img/coins/32x32/5805.png') 16 16, pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1), inset 0 -5px 0 rgba(0,0,0,0.2);
+    transition: transform 0.1s, box-shadow 0.1s;
+    background: white;
+}
+.btn:active {
+    transform: translateY(5px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1), inset 0 -2px 0 rgba(0,0,0,0.2);
+}
+.btn-nope { color: #f44336; border: 4px solid #f44336; }
+.btn-like { color: #4caf50; border: 4px solid #4caf50; }
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.end-screen {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255,255,255,0.9);
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    z-index: 100;
+}
+.end-screen h2 { font-family: 'Fredoka One'; color: #ff5722; font-size: 2rem; }
+.end-screen .btn { width: auto; border-radius: 30px; padding: 10px 30px; font-size: 1.5rem; }
+
+/* Badges */
+.badge {
+    position: absolute; top: 40px; padding: 10px 20px;
+    border-radius: 10px; font-family: 'Fredoka One'; font-size: 2.5rem;
+    opacity: 0; z-index: 10; background: rgba(255,255,255,0.8);
+    pointer-events: none;
+}
+.badge-like { right: 30px; color: #4caf50; border: 4px solid #4caf50; transform: rotate(15deg); }
+.badge-nope { left: 30px; color: #f44336; border: 4px solid #f44336; transform: rotate(-15deg); }
+
+/* Emoji Animation Inside Card */
+.emoji-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 80%;
+    pointer-events: none;
+    z-index: 5;
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+}
+
+.falling-emoji {
+    position: absolute;
+    font-size: 4rem;
+    animation: fallDown 1s ease-in forwards;
+    opacity: 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+@keyframes fallDown {
+    0% { transform: translateY(-20px) scale(0.5); opacity: 1; }
+    20% { transform: translateY(20px) scale(1.2); opacity: 1; }
+    100% { transform: translateY(400px) scale(1); opacity: 0; }
+}
+
+/* Fancy Divider */
+.fancy-divider {
+    width: 100%;
+    text-align: center;
+    border-bottom: 4px dashed #ff5722;
+    line-height: 0.1em;
+    margin: 20px 0 40px;
+    opacity: 0.8;
+}
+.fancy-divider span {
+    background: #a8e6cf;
+    padding: 0 20px;
+    font-size: 2.5rem;
+}
+
+/* Dashboard Bottom (Games) */
+.dashboard-bottom {
+    width: 100%;
+    max-width: 1200px;
+    height: 400px;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+.game-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.archery-panel {
+    max-width: 600px;
+}
+.match3-panel {
+    max-width: 600px;
+}
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+.score-display {
+    font-size: 1.8rem; font-weight: bold; color: #4caf50; font-family: 'Fredoka One';
+}
+
+.game-board {
+    flex: 1;
+    background: #dcedc1;
+    border-radius: 15px;
+    border: 4px solid #a8e6cf;
+    position: relative;
+    overflow: hidden;
+    cursor: url('https://s2.coinmarketcap.com/static/img/coins/32x32/5805.png') 16 16, crosshair;
+    margin-top: 10px;
+}
+
+/* Match-3 Board */
+.match3-board {
+    flex: 1;
+    background: #dcedc1;
+    border-radius: 15px;
+    border: 4px solid #a8e6cf;
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    gap: 2px;
+    padding: 5px;
+    overflow: hidden;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+}
+
+.match3-board div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    cursor: grab;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    transition: transform 0.1s, background 0.1s;
+    user-select: none;
+}
+
+.match3-board div:active {
+    cursor: grabbing;
+    transform: scale(1.1);
+}
+
+.match3-board div.matched {
+    animation: popOut 0.3s forwards;
+}
+
+@keyframes popOut {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+    100% { transform: scale(0); opacity: 0; }
+}
+
+.eros-char {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 5rem;
+    z-index: 2;
+    transition: top 0.1s ease-out;
+    user-select: none;
+}
+
+.target-emin {
+    position: absolute;
+    right: 30px;
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    border: 4px solid #ff5722;
+    object-fit: cover;
+    z-index: 2;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: top 0.2s ease-in-out; /* Smooth evasion */
+}
+
+.arrow {
+    position: absolute;
+    font-size: 3rem;
+    z-index: 1;
+}
+
+@media (max-width: 1000px) {
+    .dashboard-top { flex-direction: column; align-items: center; height: auto; }
+    .sidebar { width: 100%; max-width: 500px; height: 300px; }
+    .app-container { height: 750px; }
+    .dashboard-bottom { flex-direction: column; height: auto; align-items: center; }
+    .game-panel { width: 100%; height: 400px; }
+}
