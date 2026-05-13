@@ -423,12 +423,12 @@ body {
         font-size: 1.8rem;
     }
     .app-container {
-        height: 580px;
+        height: 620px;
         width: 100%;
     }
     .card-container {
         margin: 10px;
-        min-height: 350px; /* Forces container to stay open for absolute cards */
+        height: 400px; /* iOS Safari requires explicit height, not min-height */
         flex: 1;
     }
     .card-info h3 {
