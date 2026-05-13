@@ -404,7 +404,53 @@ body {
 @media (max-width: 1000px) {
     .dashboard-top { flex-direction: column; align-items: center; height: auto; }
     .sidebar { width: 100%; max-width: 500px; height: 300px; }
-    .app-container { height: 750px; }
+    .app-container { height: 750px; max-width: 100%; }
     .dashboard-bottom { flex-direction: column; height: auto; align-items: center; }
-    .game-panel { width: 100%; height: 400px; }
+    .game-panel { width: 100%; height: 450px; }
+}
+
+@media (max-width: 600px) {
+    .credit-banner {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+    .header h1 {
+        font-size: 1.8rem;
+    }
+    .app-container {
+        height: 600px;
+    }
+    .card-info h3 {
+        font-size: 1.1rem;
+    }
+    .card-info p {
+        font-size: 0.9rem;
+    }
+    .btn {
+        width: 70px; height: 70px;
+        font-size: 1.8rem;
+    }
+    .game-panel {
+        height: auto;
+        min-height: 380px;
+    }
+    .game-board {
+        min-height: 300px;
+    }
+    .match3-board {
+        min-height: 350px;
+        gap: 1px;
+    }
+    .match3-board div {
+        font-size: 1.5rem;
+    }
+    .score-display {
+        font-size: 1.2rem;
+    }
+    .eros-char {
+        font-size: 3rem;
+    }
+    .target-emin {
+        width: 60px; height: 60px;
+    }
 }
