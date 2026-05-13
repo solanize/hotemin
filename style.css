@@ -122,6 +122,7 @@ body {
 /* App Container (Center) - Increased width */
 .app-container {
     flex: 1;
+    width: 100%;
     max-width: 550px;
     display: flex;
     flex-direction: column;
@@ -172,6 +173,7 @@ body {
     cursor: url('https://s2.coinmarketcap.com/static/img/coins/32x32/5805.png') 16 16, grab;
     display: flex;
     flex-direction: column;
+    touch-action: none; /* VERY IMPORTANT FOR MOBILE SWIPING */
 }
 .card:active { cursor: url('https://s2.coinmarketcap.com/static/img/coins/32x32/5805.png') 16 16, grabbing; }
 
@@ -410,6 +412,9 @@ body {
 }
 
 @media (max-width: 600px) {
+    .dashboard-wrapper {
+        padding: 10px;
+    }
     .credit-banner {
         font-size: 0.9rem;
         padding: 10px;
@@ -418,7 +423,11 @@ body {
         font-size: 1.8rem;
     }
     .app-container {
-        height: 600px;
+        height: 550px;
+        width: 100%;
+    }
+    .card-container {
+        margin: 10px;
     }
     .card-info h3 {
         font-size: 1.1rem;
