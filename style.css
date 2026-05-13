@@ -423,11 +423,13 @@ body {
         font-size: 1.8rem;
     }
     .app-container {
-        height: 550px;
+        height: 580px;
         width: 100%;
     }
     .card-container {
         margin: 10px;
+        min-height: 350px; /* Forces container to stay open for absolute cards */
+        flex: 1;
     }
     .card-info h3 {
         font-size: 1.1rem;
